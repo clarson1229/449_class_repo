@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Baseball</string>
+    <string name="strikesUp">Strikes +</string>
+    <string name="strikesDown">Strikes -</string>
+    <string name="ballsUp">Balls +</string>
+    <string name="ballsDown">Balls -</string>
+    <string name="clear">clear</string>
+    <string name="exit">exit</string>
+    <string name="ballsCount">0</string>
+    <string name="strikesCount">0</string>
+</resources>
