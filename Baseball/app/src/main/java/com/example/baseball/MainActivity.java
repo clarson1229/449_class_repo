@@ -1,6 +1,9 @@
 package com.example.baseball;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,43 +36,43 @@ public class MainActivity extends AppCompatActivity {
         clear = findViewById(R.id.clear);
         exit = findViewById(R.id.exit);
 
-
 // Onclick Listeners
-        findViewById(R.id.strikesUp).setOnClickListener(new View.OnClickListener() {
+        strikesUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                countUp(view, Strikes);
+                countUpStrikes(view, Strikes);
             }
         });
 
-        findViewById(R.id.ballsUp).setOnClickListener(new View.OnClickListener() {
+        ballsUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                countUp(view, Balls);
+                countUpBalls(view, Balls);
             }
         });
 
-        findViewById(R.id.strikesDown).setOnClickListener(new View.OnClickListener() {
+        strikesDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 countDown(view, Strikes);
             }
         });
-        findViewById(R.id.ballsDown).setOnClickListener(new View.OnClickListener() {
+
+        ballsDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 countDown(view, Balls);
             }
         });
 
-        findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clear(view);
             }
         });
 
-        findViewById(R.id.exit).setOnClickListener(new View.OnClickListener() {
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 android.os.Process.killProcess(android.os.Process.myPid());
@@ -77,12 +80,73 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    // button disablers
+    public void disableButtons(){
+        strikesUp.setEnabled(false);
+        strikesDown.setEnabled(false);
+        ballsUp.setEnabled(false);
+        ballsDown.setEnabled(false);
+    }
+
+    public void enableButtons(){
+        strikesUp.setEnabled(true);
+        strikesDown.setEnabled(true);
+        ballsUp.setEnabled(true);
+        ballsDown.setEnabled(true);
+    }
 
     // counter functions
-    public void countUp(View view, TextView textView) {
+    public void countUpStrikes(View view, TextView textView) {
         String valueString = textView.getText().toString();
         Integer valueInt = Integer.parseInt(valueString);
         valueInt++;
+        if (valueInt==3){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setCancelable(true);
+            builder.setTitle("StrikeOut");
+            builder.setMessage("Strike OUT");
+            disableButtons();
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.show();
+        }
+        textView.setText(valueInt.toString());
+    }
+
+    public void countUpBalls(View view, TextView textView) {
+        String valueString = textView.getText().toString();
+        Integer valueInt = Integer.parseInt(valueString);
+        valueInt++;
+        if (valueInt==4){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setCancelable(true);
+            builder.setTitle("WALK");
+            builder.setMessage("WALK");
+            disableButtons();
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.show();
+        }
         textView.setText(valueInt.toString());
     }
 
@@ -98,11 +162,10 @@ public class MainActivity extends AppCompatActivity {
     public void clear(View view) {
         Integer strikeCount = 0;
         Integer ballCount = 0;
-
-
         //Sets the value to the TextView
         Strikes.setText(strikeCount.toString());
         Balls.setText(ballCount.toString());
+        enableButtons();
     }
 
 

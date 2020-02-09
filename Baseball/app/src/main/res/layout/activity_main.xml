@@ -14,6 +14,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:text="@string/strikesUp"
+        android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -28,6 +29,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:text="@string/strikesDown"
+        android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -42,6 +44,7 @@
         android:layout_marginEnd="68dp"
         android:layout_marginRight="68dp"
         android:text="@string/ballsUp"
+        android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.988"
@@ -56,6 +59,7 @@
         android:layout_marginEnd="68dp"
         android:layout_marginRight="68dp"
         android:text="@string/ballsDown"
+        android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -86,16 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.896" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Counter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
 
     <TextView
         android:id="@+id/ballsCount"
